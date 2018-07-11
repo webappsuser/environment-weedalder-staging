@@ -12,3 +12,17 @@ cleanup:
   Annotations:
     helm.sh/hook: pre-delete
     helm.sh/hook-delete-policy: hook-succeeded
+expose:
+  config:
+    domain: jx.hpengine.net
+    exposer: Ingress
+    http: "true"
+    tlsacme: "false"
+  Annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-delete-policy: hook-succeeded
+jenkins:
+  Servers:
+    Global:
+      EnvVars:
+        DOCKER_REGISTRY: 427259920065.dkr.ecr.us-west-2.amazonaws.com
